@@ -5,6 +5,8 @@ Define the meaning, format, and allowed values for each field to ensure consiste
 
 ## Dictionary
 
+## Initial Working Definitions (Draft)
+
 | Field Name | Business Definition | Data Type | Allowed Values / Format | Example | Owner | Notes |
 |---|---|---|---|---|---|---|
 | member_id | Unique identifier for each student/member | Integer | 1000+ | 1042 | Data Steward | Should be unique per member (DQ check will test) |
@@ -19,3 +21,16 @@ Define the meaning, format, and allowed values for each field to ensure consiste
 | attendance_limit | Monthly cap for Limited plan | Integer/Null | 12 for Limited, blank for Unlimited | 12 | Data Steward | Raw includes inconsistencies |
 | billing_status | Payment outcome for that month | Text | Paid, Late, Failed | Paid | Finance | Drives payment date expectations |
 | last_payment_date | Most recent payment date for that month | Date/Null | YYYY-MM-DD or blank | 2025-09-16 | Finance | If Paid, should usually be present |
+
+## Authoritative Data Definitions (Approved Standard)
+
+| Field Name | Business Definition | Data Type | Allowed Values / Format | Authoritative Source | Owner | Usage Notes |
+|---|---|---|---|---|---|---|
+| member_id | Unique identifier assigned to each student at enrollment | Integer | System-generated | Enrollment System | Operations | Primary key for member-level reporting |
+| member_status | Current lifecycle status of a student membership | Text | Active, Paused, Cancelled | Membership Management | Operations | Used to filter active population |
+| program_level | Skill level of the student’s enrolled program | Text | Beginner, Intermediate, Advanced | Training Curriculum | Training Director | Must use controlled values only |
+| plan_type | Pricing plan that governs attendance limits | Text | Limited, Unlimited | Billing System | Finance | Determines attendance cap logic |
+| monthly_fee | Monthly fee charged based on plan type | Integer | 199 (Limited), 210 (Unlimited) | Billing System | Finance | Must align with plan_type |
+| classes_attended | Total classes attended by a student in the reporting month | Integer | ≥ 0 | Attendance Tracking | Training Ops | Evaluated against attendance_limit |
+| attendance_limit | Maximum classes allowed per month for a plan | Integer/Null | 12 for Limited, null for Unlimited | Pricing Policy | Finance | Business rule enforcement field |
+| billing_status | Outcome of monthly billing attempt | Text | Paid, Late, Failed | Billing System | Finance | Used in revenue recognition |
