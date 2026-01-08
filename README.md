@@ -46,7 +46,7 @@ Establish authoritative definitions, enforceable business rules, and clear owner
 ## Tools & Methods
 - Excel Power Query (Mac) for profiling and rule-based checks
 - GitHub for version control and auditability
-- Markdown documentation for governance artifacts
+- SQL (rule replication for scalability): sql/data_quality_checks.sqlMarkdown documentation for governance artifacts
 
 ---
 

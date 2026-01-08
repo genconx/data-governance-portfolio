@@ -26,5 +26,5 @@
 |---|---|---|---|
 | DQ-001 | 0 | 0.00% | No null/error member_id values detected |
 | DQ-002 | 7 | 1.71% | Duplicate member_id + month |
-| DQ-004 | 12 | 2.93% | Invalid program_level values (misspelling) |
+| DQ-004 | 16 | 3.90% | Invalid program_level values (misspelling) |
 | DQ-011 | 7 | 1.71% | Limited plan attendance exceeds 12 classes |
